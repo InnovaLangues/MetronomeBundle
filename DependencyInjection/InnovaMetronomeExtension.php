@@ -8,8 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 
 class InnovaMetronomeExtension extends Extension
-{
-   
+{  
     
     public function load(array $configs, ContainerBuilder $container) {
         $this->loadParameters($container);
@@ -20,8 +19,7 @@ class InnovaMetronomeExtension extends Extension
 
     protected function loadServices(ContainerBuilder $container) {
         $locator = new FileLocator(__DIR__ . '/../Resources/config/services');
-        $loader = new YamlFileLoader($container, $locator);        
-        
+        $loader = new YamlFileLoader($container, $locator);
         $loader->load('listeners.yml');
         $loader->load('managers.yml');
         $loader->load('form_types.yml');
@@ -32,9 +30,7 @@ class InnovaMetronomeExtension extends Extension
     protected function loadParameters(ContainerBuilder $container) {
         $locator = new FileLocator(__DIR__ . '/../Resources/config');
         $loader = new YamlFileLoader($container, $locator);
-
         $loader->load('parameters.yml');
-
         return $this;
     }
 }
