@@ -1,6 +1,6 @@
 <?php
 
-namespace Innova\MediaResourceBundle\Entity;
+namespace Innova\MetronomeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Claroline\CoreBundle\Entity\Resource\AbstractResource;
@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * MediaResource Entity
  *
- * @ORM\Table(name="innova_media_resource")
+ * @ORM\Table(name="innova_metronome")
  * @ORM\Entity
  */
 class Metronome extends AbstractResource {

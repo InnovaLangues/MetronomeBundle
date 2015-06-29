@@ -24,7 +24,7 @@ var source = null; // another buffer source
 var bufferLoader;
 
 var option;
-
+var assetsUrl;
 
 // First, let's shim the requestAnimationFrame API, with a setTimeout fallback
 window.requestAnimFrame = (function () {
@@ -34,7 +34,6 @@ window.requestAnimFrame = (function () {
             window.oRequestAnimationFrame ||
             window.msRequestAnimationFrame ||
             function (callback) {
-                console.log('tooo bad');
                 window.setTimeout(callback, 1000 / 60);
             };
 })();
@@ -71,13 +70,6 @@ function scheduleNote(beatNumber, time) {
             blink();
             break;
     }
-    // control scheduling accuracy    
-    // @70 BPM max gap = 75ms
-    // @120 BPM max gap = 50ms
-    var now = Date.now();
-    interval = now - start;
-    start = now;
-    console.log(interval);
 }
 
 function scheduler() {
@@ -114,6 +106,8 @@ function flashIt() {
 }
 
 $(document).ready(function () {
+    
+    assetsUrl = $('input[name=assets]').val();
     // set bpm text input value
     $("#bpm").val(tempo);
     $(".set-bpm").click(function () {
@@ -167,17 +161,17 @@ $(document).ready(function () {
     });
 
     // if we wanted to load audio files, etc., this is where we should do it.
-    timerWorker = new Worker("js/metronomeworker.js");
+    timerWorker = new Worker(assetsUrl + 'bundles/innovametronome/js/metronomeworker.js');
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     audioContext = new AudioContext();
-    bufferLoader = new BufferLoader(audioContext, ['sounds/woodblock.wav'], finishedLoading);
+    
+    bufferLoader = new BufferLoader(audioContext, [assetsUrl + 'bundles/innovametronome/sounds/woodblock.wav'], finishedLoading);
     bufferLoader.load();
     // drop down menu item change
     $('.dropdown-menu a').click(function (e) {
         var rId = $(this).data('id');
         if (rId && 'undefined' !== rId) {
-            var url = 'sounds/' + rId + '.wav';
-            console.log(url);
+            var url = assetsUrl + 'bundles/innovametronome/sounds/'+  rId + '.wav';
             bufferLoader = new BufferLoader(audioContext, [url], finishedLoading);
             bufferLoader.load();
         }

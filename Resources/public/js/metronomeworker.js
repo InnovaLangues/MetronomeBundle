@@ -24,4 +24,4 @@ self.onmessage=function(e){
 	}
 };
 
-postMessage('hi there');
+//postMessage('hi there');
