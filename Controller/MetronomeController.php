@@ -2,7 +2,6 @@
 
 namespace Innova\MetronomeBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration as EXT;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

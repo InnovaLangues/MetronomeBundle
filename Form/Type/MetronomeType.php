@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  * Description of MediaResourceType
  *
  */
-class MediaResourceType extends AbstractType {
+class MetronomeType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('name', 'text', array('required' => true));
