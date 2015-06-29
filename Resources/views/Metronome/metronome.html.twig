@@ -1,0 +1,29 @@
+{% extends  "InnovaMetronomeBundle::layout.html.twig" %}
+{% block breadcrumb %}
+    {{ parent() }}
+{% endblock %}
+
+{% block metronome_content %}
+    <!-- PANEL HEADER -->
+
+    <div class="panel-heading" style="height: 75px;">
+        <div class="frow">
+            <div class="col-md-12 ">
+                <h3 class="panel-title"> {{_resource.resourceNode.name}} </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">  
+        METRONOME
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts  %}
+    {{parent()}}
+   
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %} 

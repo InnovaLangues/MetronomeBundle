@@ -1,0 +1,45 @@
+{% set layout = "ClarolineCoreBundle:Workspace:layout.html.twig" %}
+
+{% if isDesktop() %}
+    {% set layout = "ClarolineCoreBundle:Desktop:layout.html.twig" %}
+{% endif %}
+{% extends layout %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+
+    {% stylesheets debug=false filter='lessphp, cssmin' output='vendor/innovametronome/innova_metronome.css'
+        '@InnovaMediaResourceBundle/Resources/public/less/app.less'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="metronome-container">
+        <div class="panel panel-default">
+            {% block metronome_content %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ url('bazinga_jstranslation_js', { 'domain':'metronome' }) }}"></script>
+
+
+
+    {% javascripts
+        '@InnovaMetronomeBundle/Resources/public/js/metronome.js'
+        '@InnovaMetronomeBundle/Resources/public/js/metronomeworker.js'
+    %}
+
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
