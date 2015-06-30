@@ -84,6 +84,7 @@ function scheduler() {
 var start = 0;
 var interval = 0;
 
+// play sound
 function bleep(time) {
     source = audioContext.createBufferSource();
     source.buffer = audio.buffer;
@@ -91,17 +92,11 @@ function bleep(time) {
     source.start(time, 0, time + noteLength);
 }
 
+// blink
 function blink() {
     $("#beatIndicator").addClass('blink');
     setTimeout(function () {
         $("#beatIndicator").removeClass('blink');
-    }, 60);
-}
-
-function flashIt() {
-    document.getElementById('flash').classList.add('on');
-    window.setTimeout(function () {
-        document.getElementById('flash').classList.remove('on');
     }, 100);
 }
 
@@ -110,35 +105,37 @@ $(document).ready(function () {
     assetsUrl = $('input[name=assets]').val();
     // set bpm text input value
     $("#bpm").val(tempo);
-    $(".set-bpm").click(function () {
-        var currentValue = parseFloat($(this).val());
-        $("#bpm").val(currentValue);
-        tempo = parseFloat($("#bpm").val());
-    });
+    // TEMPO Btn plus on click
     $("#bpmPlus").click(function () {
         var currentValue = parseFloat($("#bpm").val());
         $("#bpm").val(currentValue + 5);
         tempo = parseFloat($("#bpm").val());
+        // max tempo
         if (tempo > '500') {
             $("#bpm").val(500);
             tempo = 500;
         }
     });
+    // TEMPO Btn minus on click
     $("#bpmMinus").click(function () {
         var currentValue = parseFloat($("#bpm").val());
         $("#bpm").val(currentValue - 5);
         tempo = parseFloat($("#bpm").val());
+        // min tempo
         if (tempo < '1') {
             $("#bpm").val(1);
             tempo = 1;
         }
     });
+    // BPM text input change event
     $("#bpm").change(function () {
         tempo = parseFloat($("#bpm").val());
+        // min tempo
         if (tempo < '1') {
             $("#bpm").val(1);
             tempo = 1;
         }
+        // max tempo
         if (tempo > '500') {
             $("#bpm").val(500);
             tempo = 500;

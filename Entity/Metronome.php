@@ -49,7 +49,7 @@ class Metronome extends AbstractResource {
    
 
     public function __construct() {
-        $this->published = false;
+        $this->published = true;
         $this->modified = false;
     }   
 

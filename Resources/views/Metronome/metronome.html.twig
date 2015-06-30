@@ -6,7 +6,7 @@
 {% block metronome_content %}
     <!-- PANEL HEADER -->
 
-    <div class="panel-heading" style="height: 75px;">
+    <div class="panel-heading">
         <div class="frow">
             <div class="col-md-12 ">
                 <h3 class="panel-title"> {{_resource.resourceNode.name}} </h3>
@@ -16,13 +16,15 @@
 
     <div class="panel-body"> 
         <div class="metronome-container">
-
-            <!-- light + play + tempo -->
+            <!-- light -->
             <div class="row">
-                <div id="beatIndicatorContainer" class="col-md-2">
+                <div id="beatIndicatorContainer" class="col-md-12 center-text">
                     <div id="beatIndicator"></div>
                 </div>
-                <div class="col-md-10 text-center">
+            </div>
+            <!-- play -->
+            <div class="row">
+                <div class="col-md-12 text-center">
                     <div class="my-btn-container">
                         <button id="play" class="btn btn-default btn-play" title="{{'start_stop' | trans({}, 'metronome')}} ">
                             <i class="fa fa-play"></i> / <i class="fa fa-pause"></i>
@@ -55,7 +57,7 @@
                         </label>
                         <label class="btn btn-default btn-sample">
                             <input type="radio" name="options" value="beep" />
-                           {{'sound' | trans({}, 'metronome')}} 
+                            {{'sound' | trans({}, 'metronome')}} 
                         </label>
                         <label class="btn btn-default btn-sample">
                             <input type="radio" name="options" value="blink" />
