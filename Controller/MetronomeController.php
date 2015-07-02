@@ -3,16 +3,13 @@
 namespace Innova\MetronomeBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration as EXT;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Claroline\CoreBundle\Entity\Workspace\Workspace;
-
 use Innova\MetronomeBundle\Entity\Metronome;
-
 
 /**
  * Class MetronomeController
@@ -21,10 +18,7 @@ use Innova\MetronomeBundle\Entity\Metronome;
  * @ParamConverter("workspace", class="ClarolineCoreBundle:Workspace\Workspace", options={"mapping": {"workspaceId": "id"}})
  *
  */
-
-class MetronomeController extends Controller
-{
-   
+class MetronomeController extends Controller {
 
     /**
      * display a metronome
@@ -44,8 +38,6 @@ class MetronomeController extends Controller
         );
     }
 
-
-
     /**
      * administrate a metronome
      * @Route("/edit/{id}", requirements={"id" = "\d+"}, name="innova_metronome_administrate")
@@ -61,7 +53,7 @@ class MetronomeController extends Controller
         return $this->render('InnovaMetronomeBundle:Metronome:metronome.html.twig', array(
                     '_resource' => $m,
                     'workspace' => $workspace
-                )
+                        )
         );
     }
 

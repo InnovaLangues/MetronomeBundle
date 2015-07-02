@@ -24,9 +24,4 @@ class InnovaMetronomeBundle extends PluginBundle
         return new AdditionalInstaller();
     }
     */
-
-    public function hasMigrations()
-    {
-        return false;
-    }
 }

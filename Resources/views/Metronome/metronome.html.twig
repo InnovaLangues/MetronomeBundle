@@ -5,15 +5,14 @@
 
 {% block metronome_content %}
     <!-- PANEL HEADER -->
-
     <div class="panel-heading">
-        <div class="frow">
+        <div class="row">
             <div class="col-md-12 ">
                 <h3 class="panel-title"> {{_resource.resourceNode.name}} </h3>
             </div>
         </div>
     </div>
-
+    <!-- PANEL BODY -->
     <div class="panel-body"> 
         <div class="metronome-container">
             <!-- light -->
@@ -42,10 +41,10 @@
                             <button id="bpmPlus" type="button" class="btn btn-default" title="{{'increase_tempo' | trans({}, 'metronome')}}">+</button>
                             <button id="bpmMinus" type="button"  class="btn btn-default" title="{{'decrease_tempo' | trans({}, 'metronome')}}">-</button>
                         </span>
-                    </div><!-- /input-group -->
+                    </div>
                 </div>
             </div>
-            <!-- sound / light -->
+            <!-- mode choice -->
             <hr/>
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -106,12 +105,3 @@
     <input type="hidden" name="assets" value="{{asset('')}}"/>
 
 {% endblock %}
-
-{% block javascripts  %}
-    {{parent()}}
-
-    {% javascripts %}
-
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %} 

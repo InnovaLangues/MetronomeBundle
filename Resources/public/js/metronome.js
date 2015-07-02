@@ -101,7 +101,7 @@ function blink() {
 }
 
 $(document).ready(function () {
-    
+
     assetsUrl = $('input[name=assets]').val();
     // set bpm text input value
     $("#bpm").val(tempo);
@@ -157,18 +157,17 @@ $(document).ready(function () {
         }
     });
 
-    // if we wanted to load audio files, etc., this is where we should do it.
     timerWorker = new Worker(assetsUrl + 'bundles/innovametronome/js/metronomeworker.js');
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     audioContext = new AudioContext();
-    
+
     bufferLoader = new BufferLoader(audioContext, [assetsUrl + 'bundles/innovametronome/sounds/woodblock.wav'], finishedLoading);
     bufferLoader.load();
     // drop down menu item change
     $('.dropdown-menu a').click(function (e) {
         var rId = $(this).data('id');
         if (rId && 'undefined' !== rId) {
-            var url = assetsUrl + 'bundles/innovametronome/sounds/'+  rId + '.wav';
+            var url = assetsUrl + 'bundles/innovametronome/sounds/' + rId + '.wav';
             bufferLoader = new BufferLoader(audioContext, [url], finishedLoading);
             bufferLoader.load();
         }
@@ -183,8 +182,6 @@ $(document).ready(function () {
         }
     };
     timerWorker.postMessage({"interval": lookahead});
-
-
 
 });
 
@@ -216,8 +213,9 @@ BufferLoader.prototype.loadBuffer = function (url, index) {
                 return;
             }
             loader.bufferList[index] = buffer;
-            if (++loader.loadCount == loader.urlList.length)
+            if (++loader.loadCount == loader.urlList.length){
                 loader.onload(loader.bufferList);
+            }
         }, function (e) {
             console.log('decodeAudioData error');
             console.log(e);
@@ -230,6 +228,7 @@ BufferLoader.prototype.loadBuffer = function (url, index) {
     request.send();
 };
 BufferLoader.prototype.load = function () {
-    for (var i = 0; i < this.urlList.length; ++i)
+    for (var i = 0; i < this.urlList.length; ++i) {
         this.loadBuffer(this.urlList[i], i);
+    }
 };
