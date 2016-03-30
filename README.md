@@ -23,5 +23,12 @@ Install with composer :
 * Nicolas Dufour (eldoniel)
 * Patrick Guillou (pitrackster)
 
+
+## Requests
+
+Go to [Claroline](https://github.com/claroline/Claroline/issues) if you want to ask for new features.
+
+Go to [Claroline Support](https://github.com/claroline/ClaroSupport/issues) if you encounter some bugs.
+
 ## Limitations
 The regularity is still to improve...
